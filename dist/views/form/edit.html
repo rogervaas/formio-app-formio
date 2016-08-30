@@ -14,7 +14,7 @@
   </div>
   <!--input type="hidden" ng-model="form.type"/-->
   <select ng-model="form.type">
-	<option ng-repeat="formType in formTypes">{{formType}}</option>
+	<option ng-repeat="formType in form.formTypes">{{formType}}</option>
   </select>
   <div ng-include="'views/form/settings.html'"></div>
   <form-builder src="formUrl"></form-builder>

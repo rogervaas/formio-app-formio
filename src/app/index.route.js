@@ -2,8 +2,6 @@
   /* global _: false */
   'use strict';
   
-  var formTypes = ["form","wizard"];
-  
   angular
     .module('formioApp')
     .constant('SubmissionAccessLabels', {
@@ -131,7 +129,7 @@
         $scope.formUrl = AppConfig.appUrl + '/form';
         $scope.appUrl = AppConfig.appUrl;
         $scope.formUrl += $stateParams.formId ? ('/' + $stateParams.formId) : '';
-        $scope.form = {components:[], type: ($stateParams.formType ? $stateParams.formType : 'form')};
+        $scope.form = {components:[], formTypes: ['form','wizard'], type: ($stateParams.formType ? $stateParams.formType : 'form')};
         $scope.formio = new Formio($scope.formUrl);
 
         // Load the form if the id is provided.
