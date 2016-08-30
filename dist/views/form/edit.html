@@ -12,10 +12,11 @@
     <input type="text" class="form-control" id="path" ng-model="form.path" placeholder="example" style="width: 200px; text-transform: lowercase">
     <small>The path alias for this form.</small>
   </div>
-  <!--input type="hidden" ng-model="form.type"/-->
-  <select ng-model="form.type">
-	<option ng-repeat="formType in form.formTypes">{{formType}}</option>
-  </select>
+  <input type="hidden" ng-model="form.type"/>
+  <div id="form-group-display" class="form-group">
+  	<label for="display" class="control-label">Display type:</label>
+  	<select class="form-control form-type-select" ng-model="form.display" ng-options="display.name as display.title for display in displays"></select>
+  </div>
   <div ng-include="'views/form/settings.html'"></div>
   <form-builder src="formUrl"></form-builder>
   <div class="form-group pull-right">

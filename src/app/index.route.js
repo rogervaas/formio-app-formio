@@ -115,6 +115,7 @@
       '$stateParams',
       '$state',
       'Formio',
+      'formioComponents',
       'AppConfig',
       'FormioAlerts',
       function (
@@ -122,14 +123,22 @@
         $stateParams,
         $state,
         Formio,
+        formioComponents,
         AppConfig,
         FormioAlerts
       ) {
+    	$scope.displays = [{
+    		name: 'form',
+    	    title: 'Form'
+    	}, {
+    		name: 'wizard',
+    	    title: 'Wizard'
+    	}];  
         $scope.formId = $stateParams.formId;
         $scope.formUrl = AppConfig.appUrl + '/form';
         $scope.appUrl = AppConfig.appUrl;
         $scope.formUrl += $stateParams.formId ? ('/' + $stateParams.formId) : '';
-        $scope.form = {components:[], formTypes: ['form','wizard'], type: ($stateParams.formType ? $stateParams.formType : 'form')};
+        $scope.form = {components:[], display: 'form', type: ($stateParams.formType ? $stateParams.formType : 'form')};
         $scope.formio = new Formio($scope.formUrl);
 
         // Load the form if the id is provided.
@@ -145,6 +154,27 @@
             $scope.form.name = _.camelCase($scope.form.title);
           }
         };
+        
+        var originalComps = _.cloneDeep($scope.form.components);
+        originalComps.push(angular.copy(formioComponents.components.button.settings));
+        
+        var currentDisplay = 'form';
+        $scope.$watch('form.display', function(display) {
+          if (display && (display !== currentDisplay)) {
+            currentDisplay = display;
+            if (display === 'form') {
+              $scope.form.components = originalComps;
+            } else {
+              $scope.form.components = [{
+                type: 'panel',
+                input: false,
+                title: 'Page 1',
+                theme: 'default',
+                components: originalComps
+              }];
+            }
+          }
+        });
 
         // When a submission is made.
         $scope.$on('formSubmission', function(event, submission) {
