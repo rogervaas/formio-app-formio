@@ -178,6 +178,7 @@
                 input: false,
                 title: 'Page 1',
                 theme: 'default',
+                key: 'page1',
                 components: originalComps
               }];
             }
