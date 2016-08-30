@@ -124,6 +124,7 @@
         AppConfig,
         FormioAlerts
       ) {
+    	$scope.formTypes = ["form","wizard"];
         $scope.formId = $stateParams.formId;
         $scope.formUrl = AppConfig.appUrl + '/form';
         $scope.appUrl = AppConfig.appUrl;
