@@ -116,6 +116,7 @@
       '$state',
       'Formio',
       'formioComponents',
+      '$timeout',
       'AppConfig',
       'FormioAlerts',
       function (
@@ -124,6 +125,7 @@
         $state,
         Formio,
         formioComponents,
+        $timeout,
         AppConfig,
         FormioAlerts
       ) {
@@ -157,7 +159,10 @@
         
         var originalComps = _.cloneDeep($scope.form.components);
         originalComps.push(angular.copy(formioComponents.components.button.settings));
-        
+        $scope.jsonCollapsed = true;
+        $timeout(function() {
+          $scope.jsonCollapsed = false;
+        }, 200);
         var currentDisplay = 'form';
         $scope.$watch('form.display', function(display) {
           if (display && (display !== currentDisplay)) {
