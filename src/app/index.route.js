@@ -119,7 +119,6 @@
       '$timeout',
       'AppConfig',
       'FormioAlerts',
-      '$log',
       function (
         $scope,
         $stateParams,
@@ -128,10 +127,8 @@
         formioComponents,
         $timeout,
         AppConfig,
-        FormioAlerts,
-        $log
+        FormioAlerts
       ) {
-    	  $scope.$log = $log;
     	$scope.displays = [{
     		name: 'form',
     	    title: 'Form'
@@ -143,7 +140,7 @@
         $scope.formUrl = AppConfig.appUrl + '/form';
         $scope.appUrl = AppConfig.appUrl;
         $scope.formUrl += $stateParams.formId ? ('/' + $stateParams.formId) : '';
-        $scope.form = {components:[], display: 'form', page: '0', numPages: '1', type: ($stateParams.formType ? $stateParams.formType : 'form')};
+        $scope.form = {components:[], display: 'form', type: ($stateParams.formType ? $stateParams.formType : 'form')};
         
         $scope.formio = new Formio($scope.formUrl);
 
@@ -222,7 +219,6 @@
 
         // Save a form.
         $scope.saveForm = function() {
-        	$scope.$log.log(JSON.stringify($scope.form));
           $scope.formio.saveForm(angular.copy($scope.form)).then(function(form) {
             var method = $stateParams.formId ? 'updated' : 'created';
             FormioAlerts.addAlert({

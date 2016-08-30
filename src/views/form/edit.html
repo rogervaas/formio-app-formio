@@ -1,8 +1,10 @@
 <form role="form" novalidate>
 
   <div class="form-group pull-right">
-    <a class="btn btn-default" ng-click="cancel()">Cancel</a>
-    <input type="submit" class="btn btn-primary" ng-click="saveForm()" value="{{formId ? 'Save' : 'Create'}} {{ capitalize(form.type)  }}" />
+    <p>
+      <a class="btn btn-default" ng-click="cancel()">Cancel</a>
+      <input type="submit" class="btn btn-primary" ng-click="saveForm()" value="{{formId ? 'Save' : 'Create'}} {{ capitalize(form.type)  }}" />
+    <p>
   </div>
 
 
@@ -24,7 +26,7 @@
   <input type="hidden" ng-model="form.numPages"/>
   <div id="form-group-display" class="form-group">
   	<label for="display" class="control-label">Display type:</label>
-  	<select class="form-control form-type-select" ng-model="form.display" ng-options="display.name as display.title for display in displays"></select>
+  	<select ng-model="form.display" ng-options="display.name as display.title for display in displays"></select>
   </div>
   <div ng-include="'views/form/settings.html'"></div>
   <form-builder src="formUrl"></form-builder>
