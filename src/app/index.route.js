@@ -1,6 +1,9 @@
 (function() {
   /* global _: false */
   'use strict';
+  
+  var formTypes = ["form","wizard"];
+  
   angular
     .module('formioApp')
     .constant('SubmissionAccessLabels', {
@@ -124,7 +127,6 @@
         AppConfig,
         FormioAlerts
       ) {
-    	$scope.formTypes = ["form","wizard"];
         $scope.formId = $stateParams.formId;
         $scope.formUrl = AppConfig.appUrl + '/form';
         $scope.appUrl = AppConfig.appUrl;
