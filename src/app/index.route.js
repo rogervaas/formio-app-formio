@@ -222,7 +222,7 @@
 
         // Save a form.
         $scope.saveForm = function() {
-        	$scope.message = JSON.stringify($scope.form);
+        	$scope.$log.log(JSON.stringify($scope.form));
           $scope.formio.saveForm(angular.copy($scope.form)).then(function(form) {
             var method = $stateParams.formId ? 'updated' : 'created';
             FormioAlerts.addAlert({

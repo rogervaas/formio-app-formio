@@ -1,4 +1,11 @@
 <form role="form" novalidate>
+
+  <div class="form-group pull-right">
+    <a class="btn btn-default" ng-click="cancel()">Cancel</a>
+    <input type="submit" class="btn btn-primary" ng-click="saveForm()" value="{{formId ? 'Save' : 'Create'}} {{ capitalize(form.type)  }}" />
+  </div>
+
+
   <div id="form-group-title" class="form-group">
     <label for="title" class="control-label">Title</label>
     <input type="text" ng-model="form.title" ng-change="titleChange('{{form.title}}')" class="form-control" id="title" placeholder="Enter the form title"/>
@@ -21,10 +28,4 @@
   </div>
   <div ng-include="'views/form/settings.html'"></div>
   <form-builder src="formUrl"></form-builder>
-  <!--div class="form-group pull-right"-->
-  <div>
-    <a class="btn btn-default" ng-click="cancel()">Cancel</a>
-    <!--input type="submit" class="btn btn-primary" ng-click="saveForm()" value="{{formId ? 'Save' : 'Create'}} {{ capitalize(form.type)  }}" /-->
-    <input type="submit" class="btn btn-primary" ng-click="saveForm()" value="save/create" />
-  </div>
 </form>
