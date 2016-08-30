@@ -21,8 +21,10 @@
   </div>
   <div ng-include="'views/form/settings.html'"></div>
   <form-builder src="formUrl"></form-builder>
-  <div class="form-group pull-right">
+  <!--div class="form-group pull-right"-->
+  <div>
     <a class="btn btn-default" ng-click="cancel()">Cancel</a>
-    <input type="submit" class="btn btn-primary" ng-click="saveForm()" value="{{formId ? 'Save' : 'Create'}} {{ capitalize(form.type)  }}" />
+    <!--input type="submit" class="btn btn-primary" ng-click="saveForm()" value="{{formId ? 'Save' : 'Create'}} {{ capitalize(form.type)  }}" /-->
+    <input type="submit" class="btn btn-primary" ng-click="saveForm()" value="save/create" />
   </div>
 </form>
