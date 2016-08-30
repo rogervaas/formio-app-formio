@@ -140,7 +140,7 @@
         $scope.formUrl = AppConfig.appUrl + '/form';
         $scope.appUrl = AppConfig.appUrl;
         $scope.formUrl += $stateParams.formId ? ('/' + $stateParams.formId) : '';
-        $scope.form = {components:[], display: 'form', type: ($stateParams.formType ? $stateParams.formType : 'form'), page: '0', numPages: '1'};
+        $scope.form = {components:[], display: 'form', type: ($stateParams.formType ? $stateParams.formType : 'form')};
         
         $scope.formio = new Formio($scope.formUrl);
 
@@ -196,6 +196,8 @@
         // Called when the form is updated.
         $scope.$on('formUpdate', function(event, form) {
           $scope.form.components = form.components;
+          $scope.form.page = '0';
+          $scope.form.numPages = '1';
         });
 
         $scope.$on('formError', function(event, error) {
