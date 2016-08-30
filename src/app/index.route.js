@@ -170,6 +170,8 @@
             if (display === 'form') {
               $scope.form.components = originalComps;
             } else {
+            	$scope.form.page = 0;
+            	$scope.form.numPages = 1;
               $scope.form.components = [{
                 type: 'panel',
                 input: false,
