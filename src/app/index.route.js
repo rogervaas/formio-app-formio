@@ -311,12 +311,12 @@
           // Auth action alert for new resource missing role assignment.
           if(actionInfo && actionInfo.name === 'auth') {
             $scope.$watch('action.data.settings', function(current, old) {
-              if(current.hasOwnProperty('association')) {
+              if(current !== null && current.hasOwnProperty('association')) {
                 angular.element('#form-group-role').css('display', current.association === 'new' ? '' : 'none');
               }
 
               // Make the role required for submission if this is a new association.
-              if (
+              if (current !== null && 
                 current.hasOwnProperty('association') &&
                 old.hasOwnProperty('association') &&
                 current.association !== old.association

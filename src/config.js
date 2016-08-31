@@ -1,5 +1,7 @@
-var APP_URL = 'http://localhost:6001/formio';
-var API_URL = 'http://localhost:6001/formio';
+//var APP_URL = 'http://localhost:6001/formio';
+//var API_URL = 'http://localhost:6001/formio';
+var APP_URL = 'http://unctad.redfunction.ee/formio';
+var API_URL = 'http://unctad.redfunction.ee/formio';
 
 // Parse query string
 var query = {};

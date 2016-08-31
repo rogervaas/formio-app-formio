@@ -35,6 +35,9 @@
             $rootScope.alerts = this.getAlerts();
           },
           onError: function (error) {
+        	  if (error === null) {
+        		  return;
+        	  }
             var errors = error.hasOwnProperty('errors') ? error.errors : error.data && error.data.errors;
             if(errors && (Object.keys(errors).length || errors.length) > 0) {
               _.each(errors, (function(e) {
