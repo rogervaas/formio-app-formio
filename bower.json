@@ -21,6 +21,7 @@
   },
   "resolutions": {
     "jquery": "~2.1.4",
-    "angular": "^1.5.0"
+    "angular": "^1.5.0",
+    "angular-bootstrap": "^2.1.3"
   }
 }
